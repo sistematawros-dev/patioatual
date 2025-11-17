@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../tawros-logistica-api"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "menu"
+	}
+}

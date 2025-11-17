@@ -1,0 +1,559 @@
+    :root {
+      --bg: #062b52;
+      --text: #f5fbff;
+      --text-dim: #d7e4ef;
+      --accent: #3ad0ff;
+      --shadow: 0 8px 20px rgba(0, 0, 0, .25);
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, var(--bg), #082f59 50%, var(--bg));
+      color: var(--text);
+      font: 15px/1.45 Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: saturate(1.1) blur(6px);
+      background: rgba(6, 43, 82, .85);
+      border-bottom: 1px solid rgba(255, 255, 255, .08)
+    }
+
+    .topbar-inner {
+      max-width: 1400px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 14px 18px
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: .6px;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 8px;
+      margin-left: auto
+    }
+
+    .tab {
+      all: unset;
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 12px;
+      color: var(--text-dim);
+      border: 1px solid transparent
+    }
+
+    .tab[aria-selected="true"] {
+      color: var(--text);
+      border-color: rgba(255, 255, 255, .12);
+      background: rgba(255, 255, 255, .04)
+    }
+
+    .wrap {
+      max-width: 1400px;
+      margin: 20px auto;
+      padding: 0 18px 40px
+    }
+
+    .panel {
+      background: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .03));
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow)
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px;
+      gap: 8px;
+      border-bottom: 1px dashed rgba(255, 255, 255, .08)
+    }
+
+    .panel-header h3 {
+      margin: 0;
+      font-size: 14px;
+      letter-spacing: .4px;
+      text-transform: uppercase;
+      color: var(--text-dim)
+    }
+
+    .panel-body {
+      padding: 12px
+    }
+
+    .btn {
+      --b: rgba(255, 255, 255, .12);
+      --bg: rgba(255, 255, 255, .05);
+      all: unset;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--b);
+      background: var(--bg);
+      color: var(--text);
+      padding: 8px 12px;
+      border-radius: 12px
+    }
+
+    .btn.primary {
+      --b: transparent;
+      --bg: linear-gradient(90deg, #17a4ff, #58e1ff);
+      color: #03263e;
+      font-weight: 700
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 999px;
+      padding: 4px 9px;
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .12);
+      font-size: 12px;
+      color: var(--text-dim)
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px
+    }
+
+    .agenda {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr))
+    }
+
+    .board {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))
+    }
+
+    .day {
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: 16px;
+      overflow: hidden
+    }
+
+    .day h4 {
+      margin: 0;
+      padding: 10px 12px;
+      font-size: 14px;
+      color: var(--text-dim);
+      border-bottom: 1px dashed rgba(255, 255, 255, .12)
+    }
+
+    .slot {
+      padding: 10px;
+      border-bottom: 1px dashed rgba(255, 255, 255, .07)
+    }
+
+    .dropzone {
+      min-height: 120px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 10px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, .04);
+      border: 1px dashed rgba(255, 255, 255, .15)
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(17, 17, 17, .06), rgba(255, 255, 255, .04));
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      color: var(--text);
+      padding: 10px
+    }
+
+    .card header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 6px
+    }
+
+    form {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(12, 1fr)
+    }
+
+    .field {
+      grid-column: span 4;
+      display: flex;
+      flex-direction: column;
+      gap: 6px
+    }
+
+    .form-actions {
+      display: flex;
+      gap: 8px;
+      justify-content: flex-end;
+      grid-column: 1 / -1;
+      margin-top: 8px
+    }
+
+    dialog {
+      border: none;
+      border-radius: 16px;
+      width: min(780px, 96vw);
+      padding: 0;
+      background: linear-gradient(180deg, #0e3a6f, #0a315f);
+      color: var(--text);
+      box-shadow: var(--shadow)
+    }
+
+    .modal-head {
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, .1)
+    }
+
+    .modal-body {
+      padding: 16px
+    }
+
+
+    /* === Form: controles padrão (inputs/selects) === */
+    form label {
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    form input,
+    form select,
+    form textarea {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, .16);
+      background: rgba(255, 255, 255, .06);
+      outline: none;
+    }
+
+    #veh-tipoPessoa {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, .16);
+      background: rgba(255, 255, 255, .06);
+      outline: none;
+
+    }
+
+    .field.tipo-pessoa {
+      max-width: 200px;
+      font-size: 12px;
+      color: var(--text-dim);
+      padding: 8px 10px;
+      border-radius: 10px;
+      margin-left: -10px;
+
+    }
+
+    hr {
+      margin: 16px 0;
+      /* espaço acima e abaixo */
+      border: 0;
+      border-top: 1px solid #ccc;
+      /* cor da linha */
+      margin-top: 12px;
+      /* espaço acima da linha */
+      margin-bottom: -20px;
+      /* espaço abaixo da linha (perto dos botões) */
+      grid-column: 1 / -1;
+    }
+
+
+    /* Estiliza o botão "Escolher arquivo" (suportado em Chromium/Edge/Firefox modernos) */
+    .field.sm input[type="file"]::file-selector-button {
+
+      border: 1px solid rgba(255, 255, 255, .12);
+      background: rgba(255, 255, 255, .05);
+      color: var(--text);
+
+    }
+
+    .field.sm input[type="file"]::file-selector-button:hover {
+      background: rgba(255, 255, 255, .08);
+    }
+
+    /* === Responsividade: quebra em telas menores === */
+    @media (max-width: 900px) {
+      .field.sm {
+        grid-column: span 6;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .field.sm {
+        grid-column: 1 / -1;
+      }
+    }
+
+    /* Campo Transportadora ocupa 8 colunas (maior que os outros) */
+    .field.transportadora {
+      grid-column: span 4;
+    }
+
+
+
+    /* === AUTO-GENERATED: Ajuste de CORES para combinar com html_css_js_exact_v2 === */
+    :root {
+      --bg: #F7F7F8;
+      --text: #1f2937;
+      --text-dim: #666E6D;
+      --accent: #0068AB;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .06);
+    }
+
+    html,
+    body {
+      background: #F7F7F8 !important;
+      color: #1f2937 !important;
+    }
+
+    .topbar {
+      background: #F7F7F8E6 !important;
+      /* translucent */
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+      backdrop-filter: saturate(180%) blur(8px);
+    }
+
+    .tab {
+      color: #666E6D !important;
+      border-color: transparent !important;
+    }
+
+    .tab[aria-selected="true"] {
+      color: #1f2937 !important;
+      background: #FFF !important;
+      border-color: rgba(0, 0, 0, 0.1) !important;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, .06) !important;
+    }
+
+    .panel,
+    .card,
+    .modal,
+    .dialog,
+    .dropzone {
+      background: #FFFFFF !important;
+      border: 1px solid rgba(0, 0, 0, 0.1) !important;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, .06) !important;
+    }
+
+    .panel-header {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+    }
+
+    .chip {
+      border: 1px solid rgba(0, 0, 0, 0.1) !important;
+      color: #666E6D !important;
+      background: #F5EFE0 !important;
+    }
+
+    .btn {
+      background: #ECECEC !important;
+      color: #1f2937 !important;
+      border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    }
+
+    .btn:hover {
+      filter: brightness(0.98);
+    }
+
+    .btn.primary {
+      background: #0068AB !important;
+      color: #FFF !important;
+      border-color: #0068AB !important;
+    }
+
+    .btn.ghost {
+      background: transparent !important;
+      color: #1f2937 !important;
+      border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    }
+
+    /* Campos de formulário */
+    input,
+    select,
+    textarea {
+      background: #FFF !important;
+      color: #1f2937 !important;
+      border: 1px solid rgba(0, 0, 0, 0.1) !important;
+      border-radius: 10px !important;
+      outline: none;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #666E6D !important;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #0068AB !important;
+      box-shadow: 0 0 0 3px #F6C03C33 !important;
+    }
+
+    /* Tabelas */
+    table {
+      background: #FFFFFF !important;
+      border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    }
+
+    th,
+    td {
+      border-color: rgba(0, 0, 0, 0.1) !important;
+      color: #1f2937 !important;
+    }
+
+    /* Indicadores e badges */
+    .badge,
+    .status,
+    .tag {
+      background: #0068AB !important;
+      color: #FFF !important;
+    }
+
+    /* Scroll e bordas suaves */
+    hr,
+    .divider {
+      border-color: rgba(0, 0, 0, 0.1) !important;
+    }
+
+    .filial {
+      margin-top: 20px;
+    }
+
+    .panel {
+      margin-top: 20px;
+    }
+
+    /* Dropdown de sugestões do campo Nome (Usuários) */
+    .usr-dropdown {
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      right: 0;
+      background: var(--panel, #fff);
+      border: 1px solid var(--border, rgba(0, 0, 0, .1));
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+      max-height: 260px;
+      overflow: auto;
+      z-index: 30;
+    }
+
+    .usr-dropdown .item {
+      padding: 10px 12px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .usr-dropdown .item strong {
+      color: var(--text, #1f2937);
+      font-weight: 600;
+    }
+
+    .usr-dropdown .item small {
+      color: var(--text-dim, #666E6D);
+    }
+
+    .usr-dropdown .item:hover,
+    .usr-dropdown .item.active {
+      background: var(--soft, #F5EFE0);
+    }
+
+    .btn.danger {
+      background: #dc2626;
+      /* vermelho */
+      color: #fff;
+      border: 1px solid rgba(0, 0, 0, .12);
+    }
+
+    .btn.danger:hover {
+      filter: brightness(0.98);
+    }
+
+
+    /* Dropdown de sugestões do campo Modelo (Veiculo) */
+    .vl-dropdown {
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      right: 0;
+      background: var(--panel, #fff);
+      border: 1px solid var(--border, rgba(0, 0, 0, .1));
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .08);
+      max-height: 260px;
+      overflow: auto;
+      z-index: 30;
+    }
+
+    .vl-dropdown .item {
+      padding: 10px 12px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .vl-dropdown .item strong {
+      color: var(--text, #1f2937);
+      font-weight: 600;
+    }
+
+    .vl-dropdown .item small {
+      color: var(--text-dim, #666E6D);
+    }
+
+    .vl-dropdown .item:hover,
+    .vl-dropdown .item.active {
+      background: var(--soft, #F5EFE0);
+    }
+
+    .btn.danger {
+      background: #dc2626;
+      /* vermelho */
+      color: #fff;
+      border: 1px solid rgba(0, 0, 0, .12);
+    }
+
+    .btn.danger:hover {
+      filter: brightness(0.98);
+    }

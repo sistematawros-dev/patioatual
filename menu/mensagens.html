@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tawros • Mensagens (WhatsApp Cloud API)</title>
+  <style>
+    body{font:15px/1.45 Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial;background:#071f3d;color:#eaf6ff;margin:0}
+    .wrap{max-width:900px;margin:20px auto;padding:0 16px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:14px;box-shadow:0 10px 24px rgba(0,0,0,.25)}
+    label{display:block;margin:8px 0 4px;color:#cfe8ff}
+    input, textarea, select{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);color:#fff;outline:none}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .actions{display:flex;gap:8px;margin-top:12px}
+    .btn{border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);color:#fff;border-radius:10px;padding:10px 12px;cursor:pointer}
+    .btn.primary{border-color:#25D366;background:rgba(37,211,102,.15)}
+    .chip{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:6px 10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);font-size:12px}
+    .log{white-space:pre-wrap;background:#0b254a;border-radius:10px;padding:8px;border:1px solid rgba(255,255,255,.1);max-height:280px;overflow:auto}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Mensagens (WhatsApp Cloud API)</h1>
+    <div class="card">
+      <div class="grid">
+        <div>
+          <label>Telefone do cliente (WhatsApp)</label>
+          <input id="to" placeholder="+55 61 99999-8888" />
+        </div>
+        <div>
+          <label>Modelo</label>
+          <select id="mode">
+            <option value="text">Texto livre</option>
+            <option value="template">Template aprovado</option>
+            <option value="document">Documento (PDF)</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="form-text">
+        <label>Mensagem</label>
+        <textarea id="body" rows="6" placeholder="Digite a mensagem..."></textarea>
+      </div>
+
+      <div id="form-template" hidden>
+        <label>Template name</label>
+        <input id="template" placeholder="ex.: tawros_agendamento" />
+        <label>Language code</label>
+        <input id="lang" value="pt_BR" />
+        <label>Body parameters (um por linha)</label>
+        <textarea id="params" rows="4" placeholder="Ex.:&#10;{DATA}&#10;{HORA}&#10;{PLACA}"></textarea>
+      </div>
+
+      <div id="form-doc" hidden>
+        <label>Link do PDF</label>
+        <input id="link" placeholder="https://..." />
+        <label>Nome do arquivo</label>
+        <input id="filename" value="comprovante.pdf" />
+        <label>Legenda (opcional)</label>
+        <input id="caption" placeholder="Comprovante do agendamento..." />
+      </div>
+
+      <div class="actions">
+        <button class="btn" id="btnTest">Health</button>
+        <button class="btn primary" id="btnSend">Enviar</button>
+      </div>
+    </div>
+
+    <h3>Resposta</h3>
+    <div id="out" class="log"></div>
+  </div>
+
+  <script src="assets/js/config.js"></script>
+  <script>
+    // simples "import" dos helpers via dynamic import se suportado; senão, uso fetch direto
+  </script>
+  <script type="module">
+    import { sendWhatsText, sendWhatsTemplate, sendWhatsDocument } from './assets/js/whatsapp-api.js';
+
+    const $ = s=>document.querySelector(s);
+    const out = $('#out');
+    const mode = $('#mode');
+    const blockText = $('#form-text');
+    const blockTpl = $('#form-template');
+    const blockDoc = $('#form-doc');
+
+    function setMode(){
+      blockText.hidden = mode.value !== 'text';
+      blockTpl.hidden  = mode.value !== 'template';
+      blockDoc.hidden  = mode.value !== 'document';
+    }
+    mode.addEventListener('change', setMode);
+    setMode();
+
+    async function health(){
+      const res = await fetch((typeof API_BASE!=='undefined'?API_BASE:'') + '/integrations/whatsapp/health');
+      out.textContent = await res.text();
+    }
+    document.getElementById('btnTest').addEventListener('click', ()=> health());
+
+    document.getElementById('btnSend').addEventListener('click', async ()=>{
+      out.textContent = 'Enviando...';
+      try {
+        const to = document.getElementById('to').value;
+        if (mode.value==='text'){
+          const body = document.getElementById('body').value;
+          const r = await sendWhatsText(to, body);
+          out.textContent = JSON.stringify(r, null, 2);
+        } else if (mode.value==='template'){
+          const template = document.getElementById('template').value;
+          const languageCode = document.getElementById('lang').value || 'pt_BR';
+          const params = document.getElementById('params').value.split('\\n').filter(Boolean).map(v => ({ type:'text', text:String(v) }));
+          const r = await sendWhatsTemplate(to, template, languageCode, params);
+          out.textContent = JSON.stringify(r, null, 2);
+        } else {
+          const link = document.getElementById('link').value;
+          const filename = document.getElementById('filename').value || 'comprovante.pdf';
+          const caption = document.getElementById('caption').value || '';
+          const r = await sendWhatsDocument(to, link, filename, caption);
+          out.textContent = JSON.stringify(r, null, 2);
+        }
+      } catch(e){
+        out.textContent = 'Erro: ' + e.message;
+      }
+    });
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,141 @@
+/* ========================================
+   TAWROS - Design Tokens do Figma
+   Extraído automaticamente do projeto Figma
+   Última modificação: 2025-10-21T01:26:32Z
+   ======================================== */
+
+:root {
+    /* === CORES PRIMÁRIAS DO FIGMA === */
+    --figma-brand-primary: #0b3c49;        /* Cor principal da marca */
+    --figma-brand-secondary: #064974;      /* Azul escuro */
+    --figma-brand-accent: #03aefc;         /* Azul claro/accent */
+
+    /* === CORES DE SUPERFÍCIE === */
+    --figma-surface-primary: #ffffff;      /* Branco */
+    --figma-surface-secondary: #f9fafa;    /* Cinza muito claro */
+    --figma-surface-tertiary: #f7f7f8;     /* Cinza claro */
+    --figma-surface-muted: #f3f4f4;        /* Cinza suave */
+
+    /* === CORES DE BORDA === */
+    --figma-border-light: rgba(0, 0, 0, 0.10);
+    --figma-border-medium: #e7e9e9;
+    --figma-border-dark: #d9d9d9;
+
+    /* === CORES DE TEXTO === */
+    --figma-text-primary: #181a1b;         /* Preto principal */
+    --figma-text-secondary: #61676b;       /* Cinza médio */
+    --figma-text-tertiary: #898f8f;        /* Cinza claro */
+    --figma-text-disabled: #afb3b6;        /* Cinza desabilitado */
+    --figma-text-inverse: #ffffff;         /* Branco para fundos escuros */
+
+    /* === CORES INTERATIVAS === */
+    --figma-interactive-default: #0068ab;   /* Azul interativo */
+    --figma-interactive-hover: #01a4f6;     /* Azul hover */
+    --figma-interactive-active: #2cbdff;    /* Azul ativo */
+    --figma-interactive-subtle: #eff9ff;    /* Azul muito claro */
+
+    /* === CORES DE STATUS === */
+    --figma-success: #049228;               /* Verde sucesso */
+    --figma-success-light: #1a9338;
+    --figma-success-bg: #f2fbf8;
+
+    --figma-warning: #e79d13;               /* Laranja aviso */
+    --figma-warning-light: #ffb042;
+    --figma-warning-bg: #fff3e0;
+
+    --figma-error: #d54033;                 /* Vermelho erro */
+    --figma-error-dark: #a3292f;
+    --figma-error-bg: #fff6f5;
+
+    --figma-info: #5176fa;                  /* Azul informação */
+    --figma-info-light: #b6e5ff;
+    --figma-info-bg: #e3f2fd;
+
+    /* === PALETA COMPLETA (149 cores) === */
+    --figma-color-1: #181a1b;
+    --figma-color-2: #064974;
+    --figma-color-3: #75d3ff;
+    --figma-color-4: #afb3b6;
+    --figma-color-5: #0b3c49;
+    --figma-color-6: #f2f2f3;
+    --figma-color-7: #e79d13;
+    --figma-color-8: #ffb042;
+    --figma-color-9: #111213;
+    --figma-color-10: #ffffff;
+    --figma-color-11: #03aefc;
+    --figma-color-12: #68cefd;
+    --figma-color-13: #27292b;
+    --figma-color-14: #7e47eb;
+    --figma-color-15: #5176fa;
+    --figma-color-16: #171717;
+    --figma-color-17: #2cbdff;
+    --figma-color-18: #555555;
+    --figma-color-19: #b6e5ff;
+    --figma-color-20: #000000;
+    --figma-color-21: #00366c;
+    --figma-color-22: #f9fafa;
+    --figma-color-23: #61676b;
+    --figma-color-24: #0068ab;
+    --figma-color-25: #01a4f6;
+    --figma-color-26: #f5fbff;
+    --figma-color-27: #eff9ff;
+    --figma-color-28: #d9d9d9;
+    --figma-color-29: #666e6d;
+    --figma-color-30: #e7e9e9;
+    --figma-color-31: #14201f;
+    --figma-color-32: #f7f7f8;
+    --figma-color-33: #f5efe0;
+    --figma-color-34: #f3f4f4;
+    --figma-color-35: #049228;
+    --figma-color-36: #d54033;
+    --figma-color-37: #898f8f;
+    --figma-color-38: #f6c03c;
+    --figma-color-39: #dadada;
+    --figma-color-40: #5a5c66;
+    --figma-color-41: #f2fbf8;
+    --figma-color-42: #33997f;
+    --figma-color-43: #bad630;
+    --figma-color-44: #4f5857;
+    --figma-color-45: #dc2a23;
+
+    /* === SIDEBAR ESPECÍFICO === */
+    --sidebar-width: 240px;
+    --sidebar-bg: var(--figma-surface-primary);
+    --sidebar-border: var(--figma-border-light);
+    --sidebar-padding: 16px;
+    --sidebar-item-height: 40px;
+    --sidebar-item-gap: 16px;
+    --sidebar-icon-size: 18px;
+    --sidebar-border-radius: 6px;
+
+    /* === ESPAÇAMENTOS DO FIGMA === */
+    --spacing-4: 4px;
+    --spacing-6: 6px;
+    --spacing-8: 8px;
+    --spacing-12: 12px;
+    --spacing-16: 16px;
+    --spacing-20: 20px;
+    --spacing-24: 24px;
+
+    /* === TIPOGRAFIA DO FIGMA === */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-size-12: 12px;
+    --font-size-14: 14px;
+    --font-size-16: 16px;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --line-height-16: 16px;
+    --line-height-20: 20px;
+    --line-height-24: 24px;
+
+    /* === SOMBRAS === */
+    --shadow-sidebar: 0 1.25px 0 0 #fff;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+
+    /* === TRANSIÇÕES === */
+    --transition-fast: 150ms ease;
+    --transition-base: 200ms ease;
+    --transition-slow: 300ms ease;
+}
