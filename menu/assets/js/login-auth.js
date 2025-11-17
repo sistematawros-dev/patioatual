@@ -6,7 +6,7 @@
   let token = localStorage.getItem(TOKEN_KEY) || '';
 
   function getApiBase() {
-    return localStorage.getItem(API_BASE_KEY) || 'http://localhost:3333';
+     return localStorage.getItem(API_BASE_KEY) || 'https://api.sistema.tawros.com.br';
   }
 
   function setToken(value) {
@@ -86,3 +86,4 @@
     },
   };
 })(window);
+
