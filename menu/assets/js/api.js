@@ -1,4 +1,10 @@
 // Camada de acesso à API
+
+// fallback seguro para API_BASE caso config.js ainda não tenha carregado
+const API_BASE = (window.API_BASE)
+  || localStorage.getItem('API_BASE')
+  || (location.protocol === 'https:' ? 'https://api.sistema.tawros.com.br' : 'http://localhost:3333');
+
 let TOKEN = localStorage.getItem('TOKEN') || '';
 function setToken(t) { TOKEN = t || ''; if (t) localStorage.setItem('TOKEN', t); }
 async function api(path, opts = {}) {
